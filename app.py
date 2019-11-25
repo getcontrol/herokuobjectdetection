@@ -23,7 +23,7 @@ def index():
 def upload():
     if request.method == 'POST':
         file = Image.open(request.files['file'].stream)
-        img = detector.detectObject(file)
+        img = transform.apply_filter(file)
         return send_file(io.BytesIO(img),attachment_filename='image.jpg',mimetype='image/jpg')
 
 
